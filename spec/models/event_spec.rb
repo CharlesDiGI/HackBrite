@@ -42,8 +42,8 @@ RSpec.describe Event, type: :model do
 
   context "associations" do
 
-    describe "user associatino" do
-      it { expect(@event).to have_many(:attendees).class_name('User') }
+    describe "attendances association" do
+      it { expect(@event).to have_many(:attendances) }
     end
 
   end

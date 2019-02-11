@@ -17,8 +17,12 @@ ActiveRecord::Schema.define(version: 2019_02_11_102103) do
 
   create_table "attendances", force: :cascade do |t|
     t.string "stripe_customer_id"
+    t.bigint "event_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_attendances_on_event_id"
+    t.index ["user_id"], name: "index_attendances_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -42,8 +46,12 @@ ActiveRecord::Schema.define(version: 2019_02_11_102103) do
     t.text "description"
     t.string "first_name"
     t.string "last_name"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_users_on_user_id"
   end
 
+  add_foreign_key "attendances", "events"
+  add_foreign_key "attendances", "users"
 end
