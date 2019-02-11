@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Créé par **Charles Di Giampietro** (**@Charl** sur Slack)
 
-Things you may want to cover:
+Après le Facebook du pauvre, voilà la version française d'Eventbrite codé par le stagiaire
 
-* Ruby version
+Mais juste la version back pour l'instant, faut pas déconner
 
-* System dependencies
+## Step by step pour tester le projet chez oit
 
-* Configuration
+Comme d'hab: `git clone` `bundle install` puis `rails db:create db:migrate db:seed`
 
-* Database creation
+## Que s'est-il passé ?
 
-* Database initialization
+A chaque création de user, tu lui as envoyé un mail en lui disant un truc du style `bravo champion`
 
-* How to run the test suite
+Puis des events ont été créés.
 
-* Services (job queues, cache servers, search engines, etc.)
+Et enfin des users ont voulu rejoindre ces super events, et tu as envoyé un mail au créateur de l'event (l'admin), en lui disant `bravo Jean-Mimi, un user a rejoint ton event 'barbecue sur les champs jeudi en 8, venez nombreux et ramenez des merguez'`
 
-* Deployment instructions
+Tu peux aller vérifier tout ça sur [Yopmail](www.yopmail.com) si tu veux. 
+Rentre les emails des users dans le champ de recherche. Emails que tu peux retrouver en faisant `rails console` puis un petit `tp User.all` des familles pour pouvoir les afficher.
 
-* ...
+## Les tests ? Quels tests ?
+
+Lance un petit `rspec` dans ton terminal et ensuite croise les doigts
+
+bisous gros :heart:
+
+
