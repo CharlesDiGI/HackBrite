@@ -18,7 +18,7 @@ Puis des events ont été créés.
 
 Et enfin des users ont voulu rejoindre ces super events, et tu as envoyé un mail au créateur de l'event (l'admin), en lui disant `bravo Jean-Mimi, un user a rejoint ton event 'barbecue sur les champs jeudi en 8, venez nombreux et ramenez des merguez'`
 
-Tu peux aller vérifier tout ça sur [Yopmail](www.yopmail.com) si tu veux. 
+Tu peux aller vérifier tout ça sur [Yopmail](http://www.yopmail.com) si tu veux. 
 Rentre les emails des users dans le champ de recherche. Emails que tu peux retrouver en faisant `rails console` puis un petit `tp User.all` des familles pour pouvoir les afficher.
 
 ## Les tests ? Quels tests ?
