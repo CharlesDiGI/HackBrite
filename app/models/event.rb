@@ -7,7 +7,7 @@ class Event < ApplicationRecord
 
   belongs_to :admin, class_name: "User" #, foreign_key: :admin_id
 
-  validates :start_date, presence: true #, unless: :past?
+  validates :start_date, presence: true
   validate :start_must_be_in_the_future
   
   validates :title, presence: true, length: { in: 5..140 }
@@ -19,11 +19,12 @@ class Event < ApplicationRecord
   validate :duration_5_min
 
   private
+
   def start_must_be_in_the_future
     errors.add(:start_date, "must be before end time") unless
-        start_date.to_i > Time.now.to_i
+    start_date.to_i > Time.now.to_i
   end 
-      
+  
   def duration_5_min
     errors.add(:duration, "must be a multiple of 5") unless
         duration % 5 == 0
