@@ -1,8 +1,13 @@
-Salut <%=  @user.first_name  %> et bienvenue chez nous !
+Salut <%= @admin.first_name %>, content de te revoir
 ==========================================================
  
-Tu a bien créé l'évènement : <%= @event.title %>.
+Tu viens de créer l'évènement: <%= @event.title %> !
  
-Voilà une rapide description de l'évènement: <%= @event.description %>.
+Voilà une rapide description de l'évènement: 
+<%= @event.description %>.
+
+N'oublie pas d'inviter tous tes potes.
  
-À très vite sur monsite.fr !
+Pour rappel, tu peux accéder à ton espace client via : <%= @url %>.
+
+À très vite sur HackBrite.fr !
