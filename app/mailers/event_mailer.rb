@@ -10,7 +10,7 @@ class EventMailer < ApplicationMailer
     @url  = 'http://hackbrite.fr/login' 
 
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @admin.email, subject: 'Nouvel évènement bien créé !') 
+    mail(to: @admin.email, subject: 'Nouvel évènement bien créé, bravo champion !') 
   end
 
 end

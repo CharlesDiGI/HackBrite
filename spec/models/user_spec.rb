@@ -18,12 +18,22 @@ RSpec.describe User, type: :model do
       expect(@user).to be_a(User)
     end
 
+    describe "#names" do
+      it { expect(@user).to validate_presence_of(:first_name) }
+      it { expect(@user).to validate_presence_of(:last_name) }
+    end
+    
+    describe "#email" do
+      it { expect(@user).to validate_presence_of(:email) }
+    end
+
   end
 
   context "associations" do
 
     describe "Event" do
-      it { expect(@user).to have_many(:events).class_name('Event') }
+      it { expect(@user).to have_many(:events) }
+      it { expect(@user).to have_many(:attendances) }
     end
 
   end

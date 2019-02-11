@@ -35,7 +35,22 @@ RSpec.describe Event, type: :model do
     it { expect(@event).to validate_presence_of(:price) }
     it { expect(@event).to validate_numericality_of(:price).only_integer }
     it { expect(@event).to validate_numericality_of(:price).
-    is_greater_than_or_equal_to(1).is_less_than_or_equal_to(1000) }
+      is_greater_than_or_equal_to(1).is_less_than_or_equal_to(1000) }
+    end
+    
+    describe "#location" do
+      it { expect(@event).to validate_presence_of(:location) }
+    end
+    
+    describe "#duration" do
+      it { expect(@event).to validate_presence_of(:duration) }
+      it { expect(@event).to validate_numericality_of(:duration).only_integer }
+      it { expect(@event).to validate_numericality_of(:duration).is_greater_than(0) }
+      it { expect(@event).to allow_values(5, 10, 15, 30, 60, 500).for(:duration) }
+    end
+    
+    describe "#start_date" do
+      it { expect(@event).to validate_presence_of(:start_date) }
     end
 
   end

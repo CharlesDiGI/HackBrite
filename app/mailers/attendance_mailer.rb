@@ -8,7 +8,7 @@ class AttendanceMailer < ApplicationMailer
     @admin = @event.admin
 
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @admin.email, subject: 'Nouvelle inscription !') 
+    mail(to: @admin.email, subject: "Nouvelle inscription sur #{@event.title} !") 
   end
 
 end

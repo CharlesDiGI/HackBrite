@@ -1,8 +1,11 @@
-Salut <%= @admin.first_name %> tu as bien créé l'évènement <%= @event.title %> !
+Salut <%= @admin.first_name %> !
 ==========================================================
  
-Tu a bien créé l'évènement : <%= @event.title %>.
+Tu te rappelles de l'évènement <%= @event.title %> que tu as créé le <%= @event.created_at %> ?.
  
-Quelqu'un s'est inscroit à ton event: <%= @user.first_name %>.
+Et bien quelqu'un vient de s'y inscrire, incroybale non?
+Il s'agit de <%= @user.first_name %> <%= @user.last_name %>.
  
-À très vite sur monsite.fr !
+Encore bravo champion.
+
+Allez, bisous et à très vite sur HackBrite.fr !

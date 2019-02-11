@@ -4,13 +4,16 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @admin.first_name %> tu as bien créé l'évènement <%= @event.title %> !</h1>
+    <h1>Salut <%= @admin.first_name %> !</h1>
     <p>
-      Quelqu'un s'est inscroit à ton event: <%= @user.first_name %>.
+      Tu te rappelles de l'évènement <strong><%= @event.title %></strong> que tu as créé le <%= @event.created_at %> ?</p>
+    <p>
+      Et bien quelqu'un vient de s'y inscrire, incroybale non? </br>
+      Il s'agit de <strong><%= @user.first_name %> <%= @user.last_name %></strong>.
     </p>
     <p>
-      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
+      Encore bravo champion.
     </p>
-    <p> À très vite sur monsite.fr !
+    <p> Allez, bisous et à très vite sur HackBrite.fr !
   </body>
 </html>

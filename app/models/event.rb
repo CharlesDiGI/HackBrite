@@ -16,7 +16,7 @@ class Event < ApplicationRecord
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }
   validates :location, presence: true
 
-  validates :duration, presence: true
+  validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :duration_5_min
 
   private

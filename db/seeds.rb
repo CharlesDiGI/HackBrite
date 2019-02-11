@@ -19,5 +19,11 @@ end
 
 #Create Event
 5.times do
-  event = Event.create!(title: Faker::Dessert.variety, description: Faker::ChuckNorris.fact, start_date: Faker::Date.between(Time.now, 1.week.from_now), duration: 5 * (1 + rand(60)), price: Faker::Number.between(1, 1000), location: Faker::Address.city, attendee_id: User.all.ids.sample, admin_id: User.all.ids.sample)
+  event = Event.create!(title: Faker::Dessert.variety, description: Faker::ChuckNorris.fact, start_date: Faker::Date.between(Time.now, 1.week.from_now), duration: 5 * (1 + rand(60)), price: Faker::Number.between(1, 1000), location: Faker::Address.city, admin_id: User.all.ids.sample)
 end
+
+#Create Acceptance
+15.times do
+  attendance = Attendance.create!(stripe_customer_id: Faker::Invoice.creditor_reference, user_id: User.all.ids.sample, event_id: Event.all.ids.sample)
+end
+
