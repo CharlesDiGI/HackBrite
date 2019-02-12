@@ -4,12 +4,13 @@
   <hr class="my-4">
   <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    <%= link_to "Create event", new_event_path, class:"btn btn-primary"  %>
   </p>
 </div>
 
 <div class="card-deck">
  <% @events.each do |event| %>
+ <div class="col-4 justify-content-around mb-4 mt-2">
   <div class="card">
     <img class="card-img-top" src="..." alt="Card image cap">
     <div class="card-body">
@@ -17,8 +18,10 @@
       <p class="card-text"><%= event.description %></p>
     </div>
     <div class="card-footer">
+    <%= link_to "Look at event", event_path(event.id), class: "btn", method: "get" %>
       <small class="text-muted">Last updated 3 mins ago</small>
     </div>
+  </div>
   </div>
   <% end %>
   </div>

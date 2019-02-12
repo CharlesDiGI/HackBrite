@@ -1,0 +1,21 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+
+<h1>Bienvenue sur ton espace <%= @user.first_name  %> </h1>
+
+
+<ul class="list-group">
+  <li class="list-group-item"><strong>First name:</strong> <%= @user.first_name %> </li>
+  <li class="list-group-item"><strong>Last name:</strong> <%= @user.last_name %> </li>
+  <li class="list-group-item"><strong>Email:</strong> <%= @user.email %> </li>
+  <li class="list-group-item"><strong>Description:</strong> <%= @user.description %></li>
+</ul>
+</br></br>
+
+<h1>Voilà tous les évènements que tu as créés</h1>
+
+<div class="list-group">
+    <% @user.events.each do |event| %>
+        <%= link_to "#{event.title}", event_path(event.id), class: "list-group-item list-group-item-action active" %>
+    <% end %>
+</div>
