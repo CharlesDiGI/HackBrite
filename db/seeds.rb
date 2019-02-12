@@ -15,15 +15,19 @@ end
 #Create User
 10.times do
   user = User.create!(first_name: Faker::DragonBall.character, last_name: Faker::Name.last_name , description: Faker::HowIMetYourMother.quote, email: Faker::Name.middle_name + "@yopmail.com")
+puts "If you want to check user creation, email sent to: #{user.email}" 
 end
+puts "*" * 66
 
 #Create Event
 5.times do
-  event = Event.create!(title: Faker::Dessert.variety, description: Faker::ChuckNorris.fact, start_date: Faker::Date.between(Time.now, 1.week.from_now), duration: 5 * (1 + rand(60)), price: Faker::Number.between(1, 1000), location: Faker::Address.city, admin_id: User.all.ids.sample)
+  event = Event.create!(title: Faker::Dessert.variety + Faker::Dessert.variety, description: Faker::ChuckNorris.fact, start_date: Faker::Date.forward(rand(1..30)), duration: 5 * (1 + rand(60)), price: Faker::Number.between(1, 1000), location: Faker::Address.city, admin_id: User.all.ids.sample)
 end
 
 #Create Acceptance
-15.times do
+10.times do
   attendance = Attendance.create!(stripe_customer_id: Faker::Invoice.creditor_reference, user_id: User.all.ids.sample, event_id: Event.all.ids.sample)
+  puts "If you want to check the attendance, email sent to: #{attendance.event.admin.email}" 
 end
+
 
