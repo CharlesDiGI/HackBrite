@@ -1,7 +1,7 @@
 class Attendance < ApplicationRecord
   after_create :new_attendee_email
 
-  belongs_to :user
+  belongs_to :attendee, class_name: "User"
   belongs_to :event
 
   def new_attendee_email

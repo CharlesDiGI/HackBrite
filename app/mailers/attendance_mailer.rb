@@ -3,7 +3,7 @@ class AttendanceMailer < ApplicationMailer
 
   def new_attendee_email(attendance)
     #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
-    @user = attendance.user
+    @attendee = attendance.attendee
     @event = attendance.event
     @admin = @event.admin
 

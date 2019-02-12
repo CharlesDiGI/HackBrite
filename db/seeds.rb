@@ -21,12 +21,12 @@ puts "*" * 66
 
 #Create Event
 5.times do
-  event = Event.create!(title: Faker::Dessert.variety + Faker::Dessert.variety, description: Faker::ChuckNorris.fact, start_date: Faker::Date.forward(rand(1..30)), duration: 5 * (1 + rand(60)), price: Faker::Number.between(1, 1000), location: Faker::Address.city, admin_id: User.all.ids.sample)
+  event = Event.create!(title: Faker::Dessert.variety + Faker::Dessert.variety, description: Faker::ChuckNorris.fact, start_date: Faker::Date.forward(rand(1..30)), duration: 5 * (1 + rand(60)), price: Faker::Number.between(1, 1000), location: Faker::Address.city, admin_id: User.all.ids.sample, attendee_id: User.all.ids.sample)
 end
 
 #Create Acceptance
 10.times do
-  attendance = Attendance.create!(stripe_customer_id: Faker::Invoice.creditor_reference, user_id: User.all.ids.sample, event_id: Event.all.ids.sample)
+  attendance = Attendance.create!(stripe_customer_id: Faker::Invoice.creditor_reference, attendee_id: User.all.ids.sample, event_id: Event.all.ids.sample)
   puts "If you want to check the attendance, email sent to: #{attendance.event.admin.email}" 
 end
 

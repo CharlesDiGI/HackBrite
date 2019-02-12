@@ -58,13 +58,17 @@ RSpec.describe Event, type: :model do
 
   end
 
-  # context "associations" do
+  context "associations" do
 
-  #   describe "attendances association" do
-  #     it { expect(@event).to have_many(:attendances) }
-  #   end
+    describe "attendances" do
+      it "should have_many attendances" do
+        attendance = FactoryBot.create(:attendance)
+        attendance.update(event: @event)
+        expect(@event.attendances.include?(attendance)).to eq(true)
+      end
+    end
 
-  # end
+  end
 
 
 

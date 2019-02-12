@@ -4,7 +4,7 @@ class Event < ApplicationRecord
   has_many :attendances
   # has_many :attendees, class_name: "User" #, foreign_key: :attendee_id
   # has_many :attendees, through: :attendances 
-  has_many :users, through: :attendances 
+  has_many :attendees, class_name: "User", through: :attendances 
   belongs_to :admin, class_name: "User" #, foreign_key: :admin_id
 
   validates :start_date, 
