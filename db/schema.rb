@@ -50,6 +50,4 @@ ActiveRecord::Schema.define(version: 2019_02_11_102103) do
     t.index ["user_id"], name: "index_users_on_user_id"
   end
 
-  add_foreign_key "attendances", "events"
-  add_foreign_key "attendances", "users"
 end

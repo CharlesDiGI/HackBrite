@@ -19,24 +19,24 @@ RSpec.describe User, type: :model do
     end
 
     describe "#names" do
-      it { expect(@user).to validate_presence_of(:first_name) }
-      it { expect(@user).to validate_presence_of(:last_name) }
+      it { expect(@user).to validate_presence_of(:first_name).with_message("Please type your first name") }
+      it { expect(@user).to validate_presence_of(:last_name).with_message("Please type your last name") }
     end
     
     describe "#email" do
-      it { expect(@user).to validate_presence_of(:email) }
+      it { expect(@user).to validate_presence_of(:email).with_message("Please insert your email adress") }
     end
 
   end
 
-  context "associations" do
+  # context "associations" do
 
-    describe "Event" do
-      it { expect(@user).to have_many(:events) }
-      it { expect(@user).to have_many(:attendances) }
-    end
+  #   describe "Event" do
+  #     it { expect(@user).to have_many(:events) }
+  #     it { expect(@user).to have_many(:attendances) }
+  #   end
 
-  end
+  # end
 
 
 

@@ -5,18 +5,31 @@ class Event < ApplicationRecord
   # has_many :attendees, class_name: "User" #, foreign_key: :attendee_id
   # has_many :attendees, through: :attendances 
   has_many :users, through: :attendances 
-
   belongs_to :admin, class_name: "User" #, foreign_key: :admin_id
 
-  validates :start_date, presence: true
+  validates :start_date, 
+              presence: { message: "Put a start date please" }
   validate :start_must_be_in_the_future
   
-  validates :title, presence: true, length: { in: 5..140 }
-  validates :description, presence: true, length: { in: 20..1000 }
-  validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }
-  validates :location, presence: true
+  validates :title,
+              presence: true, 
+              length: { minimum: 5, maximum: 140, too_short: "Title too short, at least 5 characters !", too_long: "Too long, max 140 characters !" }
+  
+  validates :description,
+              presence: { message: "Put a description please" },
+              length: { minimum: 20, maximum: 1000, too_short: "Description too short, at least 20 characters !", too_long: "Too long, max 1000 characters !" }
 
-  validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :price,
+              presence: { message: "Put a price please" },
+              numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 1000, message: "Price should be an integer between 1 & 1000" }
+
+  validates :location,
+               presence: { message: "Put a location please" }
+
+  validates :duration,
+              presence: { message: "Put a duration please" },
+              numericality: { only_integer: true, greater_than: 0 }
+  
   validate :duration_5_min
 
   private
