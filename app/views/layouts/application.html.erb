@@ -40,25 +40,21 @@
           </li>
 
           <li class="nav-item dropdown">
-          <% unless session[:user_id] %>
+          <% unless user_signed_in? %>
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sign in / Login
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Sign in</a>
-                <a class="dropdown-item" href="#">Log in</a>
-                <%# <!-- <%= link_to "Sign in", new_user_registration_path, class: "dropdown-item"  %> 
-                <%# <!-- <%= link_to "Log in", new_user_session_path, class: "dropdown-item"  %>
+                <%= link_to "Sign in", new_user_registration_path, class: "dropdown-item"  %> 
+                <%= link_to "Log in", new_user_session_path, class: "dropdown-item"  %>
               </div>
             <% else %>
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Mon Profil
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">My Profile</a>
-                <a class="dropdown-item" href="#">Log out</a>
-                <%# <!-- <%= link_to "My Profile", show_user_path, class: "dropdown-item"  %>
-                <%# <!-- <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item" %>
+                <%= link_to "My Profile", show_user_path, class: "dropdown-item"  %>
+                <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item" %>
               </div>
             <% end %>
           </li>
@@ -67,8 +63,10 @@
       </div>
     </nav>
 
-    <%= yield %>
-
+    <div  style="max-width: 90%; margin: 40px auto"> 
+      <%= yield %>
+    </div>
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
