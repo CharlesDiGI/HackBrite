@@ -1,7 +1,7 @@
 Salut <%= @admin.first_name %> !
 ==========================================================
  
-Tu te rappelles de l'évènement <%= @event.title %> que tu as créé le <%= @event.created_at %> ?.
+Tu te rappelles de l'évènement <%= @event.title %> que tu as créé le <%= @event.created_at.strftime("%F")t %> ?.
  
 Et bien quelqu'un vient de s'y inscrire, incroybale non?
 Il s'agit de <%= @user.first_name %> <%= @user.last_name %>.
