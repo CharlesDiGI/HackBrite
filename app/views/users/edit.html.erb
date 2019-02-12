@@ -1,2 +1,17 @@
 <h1>Users#edit</h1>
 <p>Find me in app/views/users/edit.html.erb</p>
+
+<div class="header">
+	<h1> Tu peux changer tes infos ici:</h1>
+</div>
+
+<%= form_for @user do |f| %>
+  <div class="form-group">
+    <%= f.text_field :first_name, value: current_user.first_name, class: 'form-control', placeholder: 'Prénom'%>
+    <%= f.text_field :last_name, value: current_user.last_name, class: 'form-control', placeholder: 'Nom'%>
+    <%= f.text_area :description, value: current_user.description, class: 'form-control', placeholder: 'Description'%>
+  </div>
+  <div class="form-group">
+	<button type="submit" class="btn btn-secondary"> Enregistrer </button>
+  </div>
+<% end %>
