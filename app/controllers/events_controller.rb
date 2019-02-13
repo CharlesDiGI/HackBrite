@@ -29,6 +29,7 @@ class EventsController < ApplicationController
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
+  end
 
     # @event = Event.create(title: param[:title], description: param[:description], price: param[:price],
     #   location: param[:location], duration: param[:duration], start_date: param[:start_date], admin: current_user)
@@ -42,18 +43,15 @@ class EventsController < ApplicationController
     #   render 'new', danger: "#{@event.errors.full_messages.join(". ")}"
     # end
 
-  end
-  
-
   private 
-
-  def event_params
-    params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :admin)
-  end
-
-  def is_user_new_for_event?
-    if current_user != @event.admin && current_user != @event.attendees.find(current_user)
+    def event_params
+      params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :admin)
     end
-  end
+
+    def is_user_new_for_event?
+      if current_user != @event.admin && current_user != @event.attendees.find(current_user)
+        true
+      end
+    end
 
 end
