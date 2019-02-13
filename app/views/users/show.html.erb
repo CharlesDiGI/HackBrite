@@ -3,7 +3,7 @@
 
 <h1>Bienvenue sur ton espace <%= @user.first_name  %> </h1></br>
 
-<%= link_to "Update your profile", edit_user_path, class:"btn btn-primary p-2" %>
+<%= link_to "Update your profile", edit_user_path(current_user), class:"btn btn-primary p-2" %>
 <%= link_to "Change password", edit_user_registration_path, class:"btn btn-primary p-2" %></br></br>
 
 <ul class="list-group">
