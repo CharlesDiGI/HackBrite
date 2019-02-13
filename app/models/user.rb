@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   after_create :welcome_send
   
-  has_many :attendances
-  has_many :events, foreign_key: "attendee_id", through: :attendances
-    has_many :organized_events, foreign_key: 'admin_id', class_name: "Event"
-    has_many :attended_events, foreign_key: 'attendee_id', class_name: "Event"
+  # has_many :attendances
+  has_many :organized_events, foreign_key: 'admin_id', class_name: "Event"
+  has_many :attended_events, foreign_key: 'attendee_id', class_name: "Attendance"
+    has_many :events, through: :attendances
   # has_many :events, class_name: 'Event', foreign_key: 'admin_id'
   # has_many :events, class_name: 'Event', foreign_key: 'attendee_id'
   
