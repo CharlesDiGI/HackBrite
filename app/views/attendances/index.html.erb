@@ -4,6 +4,7 @@
     <p class="lead">This is the list of all attendees for this event</p>
      <p class="lead">
      <%= link_to "Edit Event", edit_event_path(@event), class:"btn btn-primary"  %>
+     <%= link_to 'Destroy Event', event_path(@event), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
   </p>
   </div>
 </div>
