@@ -17,7 +17,7 @@
 <h1>Voilà tous les évènements que tu as créés</h1>
 
 <div class="list-group">
-    <% @user.attended_events.each do |event| %>
+    <% @user.organized_events.each do |event| %>
         <%= link_to "#{event.title}", event_path(event.id), class: "list-group-item list-group-item-action" %>
     <% end %>
 </div>
