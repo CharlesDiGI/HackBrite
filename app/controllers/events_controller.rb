@@ -51,8 +51,8 @@ class EventsController < ApplicationController
     params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :admin)
   end
 
-  def user_new_for_event?
-    if current_user != @event.admin #&& current_user == @event.attendees.find(current_user)
+  def is_user_new_for_event?
+    if current_user != @event.admin && current_user != @event.attendees.find(current_user)
     end
   end
 
