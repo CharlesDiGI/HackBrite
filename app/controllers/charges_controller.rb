@@ -4,6 +4,7 @@ class ChargesController < ApplicationController
   end
   
   def create
+    puts params
     # Amount in cents
     @amount = 500
   
@@ -21,7 +22,7 @@ class ChargesController < ApplicationController
   
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
+    redirect_to new_event_charge_path
   end
   
 end

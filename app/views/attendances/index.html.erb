@@ -1,0 +1,17 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-5"><%= @event.title %></h1>
+    <p class="lead">This is the list of all attendees for this event</p>
+     <p class="lead">
+     <%= link_to "Edit Event", edit_event_path(@event), class:"btn btn-primary"  %>
+  </p>
+  </div>
+</div>
+
+
+<ul class="list-group list-group-flush">
+        <li class="list-group-item display-4">Attendees name: </li>
+    <% @attendees.each do |attendee| %>
+        <li class="list-group-item display-4"><%= attendee.first_name %><%= attendee.last_name %> / <%= attendee.email %></li>
+    <% end %>
+</ul>

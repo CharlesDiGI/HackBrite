@@ -12,9 +12,11 @@ class EventsController < ApplicationController
   
   def new
     @event = Event.new
+    puts params
   end
   
   def create
+    puts params
     @event = Event.new(event_params)
     puts event_params
     @event.admin = current_user
