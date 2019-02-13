@@ -7,6 +7,8 @@
 <% elsif !current_user.attended_events.include?(@event)  %>
 <h1>tu peux rejoindre l'event</h1>
 <%= link_to "rejoins moi", new_event_attendance_path(@event.id), class:"btn btn-primary"  %>
+<% else %>
+<h1>Tu es déjà inscrit</h1>
 <% end %>
 
 <div class="jumbotron">

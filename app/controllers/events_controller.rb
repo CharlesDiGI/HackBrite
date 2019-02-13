@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
-  before_action :valid_user, only: [:destroy, :update, :edit]
+  before_action :is_admin?, only: [:destroy, :update, :edit]
   
   def index
     @events = Event.all
@@ -8,7 +8,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @is_user_new_for_event
   end
   
   def new

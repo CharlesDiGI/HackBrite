@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-
+  root 'events#index'
   devise_for :users
-  resources :events, :path => '/'
+  # resources :events, :path => '/'
   resources :users
   resources :events do
     resources :attendances
