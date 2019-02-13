@@ -71,3 +71,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'table_print'
 gem 'dotenv-rails'
 gem 'devise'
+gem 'stripe'
