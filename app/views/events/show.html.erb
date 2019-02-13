@@ -1,7 +1,7 @@
 <h1>test show event <%= @event.id %> </h1>
 
 
-<% unless @user_new_for_event %>
+<% if current_user != @event.admin || current_user != @event.attendees.find(current_user.id) %>
 <h1>tu peux rejoindre l'event</h1>
 <% end %>
 

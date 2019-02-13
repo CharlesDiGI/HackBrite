@@ -7,8 +7,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    # @user = current_user
-    @user_new_for_event
+    @is_user_new_for_event
   end
   
   def new
@@ -49,7 +48,7 @@ class EventsController < ApplicationController
     end
 
     def is_user_new_for_event?
-      if current_user != @event.admin && current_user != @event.attendees.find(current_user)
+      if current_user != @event.admin || current_user != @event.attendees.find(current_user.id)
         return true
       else
       end
