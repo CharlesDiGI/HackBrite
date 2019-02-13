@@ -7,6 +7,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    # @user = current_user
+    @user_new_for_event?
   end
   
   def new
@@ -47,6 +49,11 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :admin)
+  end
+
+  def user_new_for_event?
+    if current_user != @event.admin #&& current_user == @event.attendees.find(current_user)
+    end
   end
 
 end

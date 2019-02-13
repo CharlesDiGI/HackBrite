@@ -1,6 +1,10 @@
 <h1>test show event <%= @event.id %> </h1>
 
 
+<% unless @user_new_for_event %>
+<h1>tu peux rejoindre l'event</h1>
+<% end %>
+
 <div class="jumbotron">
   <h1 class="display-4"> <%= @event.title %> </h1>
   <p class="lead"> <strong>Event description: </strong><%= @event.description %></p>
@@ -15,6 +19,7 @@
     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
   </p>
 </div>
+
 
 <h1>Et voilà la liste de  toutes les personnes inscrites à cet évènement: </h1>
 

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'participations/new'
+  get 'participations/index'
+  get 'participations/create'
   get 'users/show'
   get 'users/edit'
   get 'users/update'
