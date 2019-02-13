@@ -4,9 +4,25 @@
 <div class="jumbotron">
   <h1 class="display-4"> <%= @event.title %> </h1>
   <p class="lead"> <strong>Event description: </strong><%= @event.description %></p>
+  <p class="lead"> <strong>Event creator: </strong><%= @event.admin.first_name %> <%= @event.admin.last_name %> </p>
+  <p class="lead"> <strong>City: </strong> <%= @event.location %> </p>
+  <p class="lead"> <strong>Price: </strong> <%= @event.price %> </p>
+  <p class="lead"> <strong>Number of attendees: </strong> <%= @event.attendees.count %> </p>
+  <p class="lead"> <strong>Start date: </strong> <%= @event.start_date %> </p>
+  <p class="lead"> <strong>End date: </strong> <%= @event.start_date + @event.duration %> </p>
   <hr class="my-4">
-  <p> <strong>City: </strong> <%= @event.location %> </p>
   <p class="lead">
     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
   </p>
+</div>
+
+<h1>Et voilà la liste de toutes les personnes inscrites à cet évènement: </h1>
+
+<div class="list-group">
+    <% @event.attendees.each do |attendee| %>
+    <h3>
+    <%= attendee.email %> /
+    <%= attendee.first_name %> <%= attendee.last_name %> 
+    </h3>
+    <% end %>
 </div>

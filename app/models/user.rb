@@ -12,8 +12,8 @@ class User < ApplicationRecord
   # has_many :events, class_name: 'Event', foreign_key: 'admin_id'
   # has_many :events, class_name: 'Event', foreign_key: 'attendee_id'
   
-  validates :first_name, presence: { message: "Please type your first name" }
-  validates :last_name, presence: { message: "Please type your last name" }
+  # validates :first_name, presence: { message: "Please type your first name" }
+  # validates :last_name, presence: { message: "Please type your last name" }
   validates :email, presence: { message: "Please insert your email adress" }, 
   format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "Please enter a valid email 'foo@foobar.bar' " }
 
