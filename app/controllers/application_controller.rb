@@ -10,6 +10,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def event_admin?
+    unless current_user == Event.find(params[:event_id]).admin
+      flash[:danger] = "You can't access it as you are not the administrator"
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   def already_attending
     if Event.find(params[:event_id]).attendees.include?(current_user)
       flash[:danger] = "You are already attending this event"
