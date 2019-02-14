@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Attendance, type: :model do
 
   before(:each) do
-    @attendance = FactoryBot.build(:attendance)
+    @attendance = FactoryBot.create(:attendance)
   end
 
   it "has a valid factory" do
@@ -14,8 +14,8 @@ RSpec.describe Attendance, type: :model do
     expect(@attendance).to be_a(Attendance)
   end
   
-  it "has a customer_strip_id" do 
-    it { should allow_value('ENVLKNAZDds').for(:customer_strip_id) }
+  describe "#stripe_customer_id" do
+    it { expect(@attendance).to validate_presence_of(:stripe_customer_id) }
   end
 
 end

@@ -1,10 +1,10 @@
 <div class="jumbotron">
-  <h1 class="display-4">Hello, this is HackBrite!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <h1 class="display-4">Salut, bienvenue sur HackBrite!</h1>
+  <p class="lead">(Le site qui veut imiter EventBrite, mais avec un budget français)</p>
   <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p>Crée de super évènements et invite tous tes potos pour faire la teuf. Yeah..</p>
   <p class="lead">
-    <%= link_to "Create event", new_event_path, class:"btn btn-primary"  %>
+    <%= link_to "Créer un évènement", new_event_path, class:"btn btn-primary"  %>
   </p>
 </div>
 
@@ -18,7 +18,7 @@
       <p class="card-text"><%= event.description %></p>
     </div>
     <div class="card-footer">
-    <%= link_to "Look at event", event_path(event.id), class: "btn", method: "get" %>
+    <%= link_to "En savoir plus?", event_path(event.id), class: "btn", method: "get" %>
       <small class="text-muted">Last updated 3 mins ago</small>
     </div>
   </div>

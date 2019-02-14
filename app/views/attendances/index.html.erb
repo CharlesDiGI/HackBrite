@@ -1,18 +1,42 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-5"><%= @event.title %></h1>
-    <p class="lead">This is the list of all attendees for this event</p>
+    <p class="lead">Voilà la liste des participants à l'évènement:</p>
+    <h1 class="display-5"><%= @event.title %></h1></br>
      <p class="lead">
-     <%= link_to "Edit Event", edit_event_path(@event), class:"btn btn-primary"  %>
-     <%= link_to 'Destroy Event', event_path(@event), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+     <%= link_to "Modifier l'évènement", edit_event_path(@event), class:"btn btn-primary"  %>
+     <%= link_to "Supprimer l'évènement", event_path(@event), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
   </p>
   </div>
 </div>
 
 
 <ul class="list-group list-group-flush">
-        <li class="list-group-item display-4">Attendees name: </li>
+        <li class="list-group-item display-4">Participants: </li>
     <% @attendees.each do |attendee| %>
         <li class="list-group-item display-4"><%= attendee.first_name %><%= attendee.last_name %> / <%= attendee.email %></li>
     <% end %>
 </ul>
+
+<!-- 
+<div class="container mt-3">
+	  <table class="table">
+	    <thead>
+	      <tr>
+	        <th class="lead">Prénom</th>
+	        <th class="lead">Nom</th>
+	        <th class="lead">Email</th>
+	        <th></th>
+	      </tr>
+	    </thead>
+	    <% @attendees.each do |attendee| %>
+		    <tbody>
+		      <tr>
+		        <td class="lead"><%= attendee.first_name %></td>
+		        <td class="lead"><%= attendee.last_name %></td>
+		        <td class="lead"><%= attendee.email %></td>
+		      </tr>
+		    </tbody>
+	    <% end %>
+	  </table>
+	</div>
+-->

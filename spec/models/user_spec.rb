@@ -18,9 +18,12 @@ RSpec.describe User, type: :model do
       expect(@user).to be_a(User)
     end
 
-    describe "#names" do
-      it { expect(@user).to validate_presence_of(:first_name).with_message("Please type your first name") }
-      it { expect(@user).to validate_presence_of(:last_name).with_message("Please type your last name") }
+    it "is a string for first_name" do
+      expect @user.first_name.class == String
+    end
+
+    it "is a string for last_name" do
+      expect @user.last_name.class == String
     end
     
     describe "#email" do

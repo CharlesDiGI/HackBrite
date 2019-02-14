@@ -15,35 +15,38 @@
 
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :start_date %>
     <%= form.datetime_select :start_date %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :duration %>
     <%= form.number_field :duration, :step => 5 %>
   </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: 'form-control' %>
+  <div class="form-row">
+    <div class="field form-group col-8">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group col-4">
+      <%= form.label :location %>
+      <%= form.text_field :location, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, class: 'form-control' %>
-  </div>
+    <div class="field form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: 'form-control' %>
+    </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :price %>
     <%= form.number_field :price, within: 1...1000 %>
   </div>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location, class: 'form-control' %>
-  </div>
 
 <% if false %>
   <div class="field">
@@ -54,7 +57,7 @@
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-primary" %>
   </div>
 <% end %>
 

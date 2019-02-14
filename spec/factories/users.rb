@@ -4,5 +4,6 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
     description { Faker::HowIMetYourMother.quote }
     email { "#{first_name}@yopmail.com" } 
+    password {"tototo"}
   end
 end
