@@ -18,6 +18,11 @@
   <p class="lead"> <strong>Nombre de participants: </strong> <%= @event.attendees.count %> </p>
   <p class="lead"> <strong>Date de début: </strong> <%= @event.start_date %> </p>
   <p class="lead"> <strong>Date de fin: </strong> <%= @event.start_date + @event.duration %> </p>
+  <%if @event.event_pic.attached?%>
+    <%= image_tag @event.event_pic, alt: 'event_picture' %>
+    <%else%>
+    <p>=== Il n'y a pas encore de photo lié à cet évènement ===</p>
+    <%end%>
 </div>
 
 

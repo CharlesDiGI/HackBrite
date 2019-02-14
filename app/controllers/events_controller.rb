@@ -12,15 +12,19 @@ class EventsController < ApplicationController
   
   def new
     @event = Event.new
-    puts params
   end
   
   def create
+    puts "*" * 40
     puts params
+    puts "*" * 40
     @event = Event.new(event_params)
-    puts event_params
     @event.admin = current_user
-
+    puts "*" * 40
+    puts params[:event_pic].inspect
+    puts "*" * 40
+    # @event.event_pic.attach(params[:event_pic])
+    
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -92,7 +96,7 @@ class EventsController < ApplicationController
 
   private 
     def event_params
-      params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :admin)
+      params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :admin, :event_pic)
     end
 
     def is_user_new_for_event?

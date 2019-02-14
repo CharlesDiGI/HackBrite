@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   # after_create :new_event_email
-
+  has_one_attached :event_pic
   has_many :attendances
   # has_many :attendees, class_name: "User" #, foreign_key: :attendee_id
   # has_many :attendees, through: :attendances 
