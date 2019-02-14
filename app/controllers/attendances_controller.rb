@@ -1,5 +1,8 @@
 class AttendancesController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:create, :index]
+  before_action :already_attending, only: [:new, :create]
+  before_action :admin_cannot_attend_own_event, only: [:new, :create]
+
   def new
     puts params[:id]
     @event = Event.find(params[:event_id])
@@ -22,7 +25,7 @@ class AttendancesController < ApplicationController
       :currency    => 'eur'
     )
 
-    Attendance.create(attendee: current_user, event: Event.find(params[:event_id]), stripe_customer_id: params[:stripeToken])
+    Attendance.create(attendee: current_user, event: Event.find(params[:event_id]), stripe_customer_id: customer.id)
     redirect_to event_path(params[:event_id])
   
     rescue Stripe::CardError => e

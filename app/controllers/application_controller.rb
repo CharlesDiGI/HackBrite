@@ -17,6 +17,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def admin_cannot_attend_own_event
+    if current_user == Event.find(params[:event_id]).admin
+      flash[:danger] = "Vous ne pouvez pas vous inscrire à un événement que vous administrez"
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :description])
