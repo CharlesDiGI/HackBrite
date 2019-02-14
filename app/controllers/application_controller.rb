@@ -1,12 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller? 
   helper_method :is_admin?, :already_attending
-  def is_admin?
-    unless current_user == Event.find(params[:id]).admin
-      flash[:danger] = "You can't access it as you are not the administrator"
-      redirect_back(fallback_location: root_path)
-    end
-  end
+  
 
   def event_admin?
     unless current_user == Event.find(params[:event_id]).admin
