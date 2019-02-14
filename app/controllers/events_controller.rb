@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  include EventsHelper
   before_action :authenticate_user!, only: [:new]
   before_action :is_admin?, only: [:destroy, :update, :edit]
   
@@ -15,15 +16,8 @@ class EventsController < ApplicationController
   end
   
   def create
-    puts "*" * 40
-    puts params
-    puts "*" * 40
     @event = Event.new(event_params)
     @event.admin = current_user
-    puts "*" * 40
-    puts params[:event_pic].inspect
-    puts "*" * 40
-    # @event.event_pic.attach(params[:event_pic])
     
     respond_to do |format|
       if @event.save
@@ -70,34 +64,12 @@ class EventsController < ApplicationController
     #   format.json { head :no_content }
     # end
   end
-    # @event = Event.find(params[:id])
-    # post_params = params[:event]
-
-    # if @event.update(start_date: post_params[:start_date], title: post_params[:title], description: post_params[:description], price: [:location, duration: post_params[:duration]])
-  	# 	redirect_to user_path(params[:id])
-  	# else
-  	#   flash[:danger] = "Il manque des informations"
-  	#   render :new 
-  	# end
-
-
-
-    # @event = Event.create(title: param[:title], description: param[:description], price: param[:price],
-    #   location: param[:location], duration: param[:duration], start_date: param[:start_date], admin: current_user)
-    #   puts @event
-
-    # if @event.save
-    #   flash[:notice] = "Post successfully created by #{current_user.first_name}"
-    #   flash[:type] = "info"
-    #   redirect_to root_path
-    # else
-    #   render 'new', danger: "#{@event.errors.full_messages.join(". ")}"
-    # end
 
   private 
     def event_params
       params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :admin, :event_pic)
     end
+
 
     def is_user_new_for_event?
       if current_user != @event.admin || current_user != @event.attendees.find(current_user.id)
@@ -105,5 +77,6 @@ class EventsController < ApplicationController
       else
       end
     end
+
 
 end

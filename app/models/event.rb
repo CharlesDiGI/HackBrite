@@ -11,6 +11,12 @@ class Event < ApplicationRecord
               presence: { message: "Put a start date please" }
   validate :start_must_be_in_the_future
   
+  validates :duration,
+              presence: { message: "Put a duration please" },
+              numericality: { only_integer: true, greater_than: 0 }
+  
+  validate :duration_5_min
+  
   validates :title,
               presence: true, 
               length: { minimum: 5, maximum: 140, too_short: "Title too short, at least 5 characters !", too_long: "Too long, max 140 characters !" }
@@ -26,11 +32,6 @@ class Event < ApplicationRecord
   validates :location,
                presence: { message: "Put a location please" }
 
-  validates :duration,
-              presence: { message: "Put a duration please" },
-              numericality: { only_integer: true, greater_than: 0 }
-  
-  validate :duration_5_min
 
   private
 

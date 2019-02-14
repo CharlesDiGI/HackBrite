@@ -15,41 +15,44 @@
 
   <% end %>
 
-  <div class="field form-group">
-    <%= form.label :start_date %>
-    <%= form.datetime_select :start_date %>
-  </div>
-
-  <div class="field form-group">
-    <%= form.label :duration %>
-    <%= form.number_field :duration, :step => 5 %>
-  </div>
-
   <div class="form-row">
-    <div class="field form-group col-8">
-      <%= form.label :title %>
-      <%= form.text_field :title, class: 'form-control' %>
+    <div class="field form-group col-3">
+      <%= form.label :start_date %>
+      <%= form.datetime_field :start_date, class: 'form-control' %>
     </div>
-
+    <div class="field form-group col-2">
+      <%= form.label "Duration (in minutes)" %>
+      <%= form.number_field :duration, :step => 5, class: 'form-control' %>
+    </div>
     <div class="field form-group col-4">
       <%= form.label :location %>
       <%= form.text_field :location, class: 'form-control' %>
     </div>
-  </div>
+    <div class="field form-group col-3">
+      <%= form.label :price %>
+      <%= form.number_field :price, within: 1...1000, class: 'form-control' %>
+    </div>
+    
+    </div>
 
-    <div class="field form-group">
+  <div class="form-row">
+    <div class="field form-group col-3">
+      <%= form.label :title %>
+      <%= form.text_area :title, class: 'form-control' %>
+    </div>
+    <div class="field form-group col-9">
       <%= form.label :description %>
       <%= form.text_area :description, class: 'form-control' %>
     </div>
 
-  <div class="field form-group">
-    <%= form.label :price %>
-    <%= form.number_field :price, within: 1...1000 %>
+
   </div>
+
+
 
   <div class="field form-group">
     <%= form.label :event_pic %>
-    <%= form.file_field :event_pic %>
+    <%= form.file_field :event_pic, class: 'form-control' %>
   </div>
 
 <% if false %>
@@ -63,6 +66,7 @@
   <div class="actions">
     <%= form.submit class:"btn btn-primary" %>
   </div>
+
 <% end %>
 
 

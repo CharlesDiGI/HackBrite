@@ -1,12 +1,13 @@
-<% if current_user == @event.admin %>
+<% if event_admin %>
 <h1> Tu es l`organisateur de l'évènement n°<%= @event.id %></h1>
-<%= link_to "Mon espace événement", event_attendances_path(@event),class:"btn btn-primary"  %></br>
-<% elsif @event.attendees.include?(current_user)  %>
+<%= link_to "Mon espace événement", event_attendances_path(@event),class:"btn btn-primary"  %>
+<% elsif already_attending(@event)  %>
 <h1>Tu es déjà inscrit</h1>
 <% else %>
 <h1>Tu peux rejoindre l'évènement</h1>
-<%= link_to "Rejoins cet évènement", new_event_attendance_path(@event.id), class:"btn btn-primary"  %>
+<%= link_to "Rejoins cet évènement", new_event_attendance_path(@event.id), class:"btn btn-primary" %>
 <% end %>
+</br></br>
 
 <div class="jumbotron">
   <h1 class="display-4"> <%= @event.title %> </h1>
@@ -16,12 +17,12 @@
   <p class="lead"> <strong>Ville: </strong> <%= @event.location %> </p>
   <p class="lead"> <strong>Prix: </strong> <%= @event.price %> </p>
   <p class="lead"> <strong>Nombre de participants: </strong> <%= @event.attendees.count %> </p>
-  <p class="lead"> <strong>Date de début: </strong> <%= @event.start_date %> </p>
-  <p class="lead"> <strong>Date de fin: </strong> <%= @event.start_date + @event.duration %> </p>
+  <p class="lead"> <strong>Date de début: </strong> <%= @event.start_date.strftime("%-d/%m/%y: %H:%M") %> </p>
+  <p class="lead"> <strong>Date de fin: </strong> <%= end_date(@event) %> </p>
   <%if @event.event_pic.attached?%>
     <%= image_tag @event.event_pic, alt: 'event_picture' %>
     <%else%>
-    <p>=== Il n'y a pas encore de photo lié à cet évènement ===</p>
+    <p class="lead">=== Il n'y a pas encore de photo lié à cet évènement ===</p>
     <%end%>
 </div>
 
