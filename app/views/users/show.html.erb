@@ -11,8 +11,16 @@
   <li class="list-group-item"><strong>Last name:</strong> <%= @user.last_name %> </li>
   <li class="list-group-item"><strong>Email:</strong> <%= @user.email %> </li>
   <li class="list-group-item"><strong>Description:</strong> <%= @user.description %></li>
+  <li class="list-group-item"><strong>Avatar actuel:</strong> 
+    <%if @user.avatar.attached?%>
+    <%= image_tag @user.avatar, alt: 'avatar' %>
+    <%else%>
+    <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+    <%end%>
+   </li>
 </ul>
 </br></br>
+
 
 <h1>Voilà tous les évènements que tu as créés</h1>
 
