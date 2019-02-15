@@ -2,10 +2,11 @@ class Event < ApplicationRecord
   # after_create :new_event_email
   has_one_attached :event_pic
   has_many :attendances
-  # has_many :attendees, class_name: "User" #, foreign_key: :attendee_id
-  # has_many :attendees, through: :attendances 
   has_many :attendees, class_name: "User", through: :attendances 
   belongs_to :admin, class_name: "User" #, foreign_key: :admin_id
+
+  has_many :event_submissions
+  has_many :event_statuses, through: :event_submissions
 
   validates :start_date, 
               presence: { message: "Put a start date please" }
