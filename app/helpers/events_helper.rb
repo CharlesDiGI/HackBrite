@@ -19,5 +19,10 @@ module EventsHelper
     event.attendees.include?(current_user)
   end
 
+  def resize(event, size)
+    if event.event_pic.attached?
+    event.event_pic.variant(resize: size)
+    end
+  end
 
 end

@@ -29,11 +29,11 @@ class EventsController < ApplicationController
       end
     end
   end
-
+  
   def edit
     @event = Event.find(params[:id])
   end
-
+  
   def update
     @event = Event.find(params[:id])
     respond_to do |format|
@@ -59,24 +59,11 @@ class EventsController < ApplicationController
       flash[:type] = "danger"
       redirect_to event_path(@event)
     end
-    # respond_to do |format|
-    #   format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-    #   format.json { head :no_content }
-    # end
   end
 
   private 
     def event_params
       params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :admin, :event_pic)
     end
-
-
-    def is_user_new_for_event?
-      if current_user != @event.admin || current_user != @event.attendees.find(current_user.id)
-        return true
-      else
-      end
-    end
-
 
 end
