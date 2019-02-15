@@ -55,12 +55,12 @@ ActiveRecord::Schema.define(version: 2019_02_15_142906) do
   create_table "event_submissions", force: :cascade do |t|
     t.bigint "event_id"
     t.bigint "event_status_id"
-    t.bigint "user_id"
+    t.bigint "webmaster_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_event_submissions_on_event_id"
     t.index ["event_status_id"], name: "index_event_submissions_on_event_status_id"
-    t.index ["user_id"], name: "index_event_submissions_on_user_id"
+    t.index ["webmaster_id"], name: "index_event_submissions_on_webmaster_id"
   end
 
   create_table "events", force: :cascade do |t|

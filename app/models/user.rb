@@ -6,10 +6,14 @@ class User < ApplicationRecord
   after_create :welcome_send
   
   has_one_attached :avatar
-  
+
   has_many :organized_events, foreign_key: 'admin_id', class_name: "Event"
   has_many :attended_events, foreign_key: 'attendee_id', class_name: "Attendance"
     has_many :events, through: :attendances
+    
+    has_many :review_jobs, foreign_key: 'webmaster_id', class_name: "EventSubmission"
+      has_many :events, through: :event_submission
+
   
   # validates :first_name, presence: { message: "Please type your first name" }
   # validates :last_name, presence: { message: "Please type your last name" }
