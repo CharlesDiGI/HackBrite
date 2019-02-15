@@ -16,7 +16,7 @@ class Event < ApplicationRecord
               numericality: { only_integer: true, greater_than: 0 }
   
   validate :duration_5_min
-  
+
   validates :title,
               presence: true, 
               length: { minimum: 5, maximum: 140, too_short: "Title too short, at least 5 characters !", too_long: "Too long, max 140 characters !" }
@@ -41,8 +41,10 @@ class Event < ApplicationRecord
   end 
   
   def duration_5_min
+    unless duration.nil?
     errors.add(:duration, "must be a multiple of 5") unless
         duration % 5 == 0
+    end
   end
 
   def new_event_email
