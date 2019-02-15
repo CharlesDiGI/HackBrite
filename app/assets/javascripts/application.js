@@ -14,3 +14,6 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require bootstrap/js/bootstrap.bundle.min
+//= require bootstrap/js/bootstrap.min
+//= require assets/js/new-age.min
