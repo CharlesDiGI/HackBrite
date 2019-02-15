@@ -25,4 +25,22 @@ module EventsHelper
     end
   end
 
+  def event_submission(event)
+    @event_submission = EventSubmission.create!(event_id: event.id, event_status_id: "1")
+  end
+
+  def accepted(event)
+    event.event_status_ids == [2]
+  end
+  
+  def pending(event)
+    event.event_status_ids == [1]
+  end
+  
+  def refused(event)
+    event.event_status_ids == [3]
+  end
+
+
+
 end

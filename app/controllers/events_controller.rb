@@ -2,13 +2,14 @@ class EventsController < ApplicationController
   include EventsHelper
   before_action :authenticate_user!, only: [:new]
   before_action :is_event_admin?, only: [:destroy, :update, :edit]
-  
+
   def index
     @events = Event.all
   end
 
   def show
     @event = Event.find(params[:id])
+
   end
   
   def new
@@ -23,6 +24,7 @@ class EventsController < ApplicationController
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
+          event_submission(@event)
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }

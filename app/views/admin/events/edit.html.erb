@@ -1,0 +1,26 @@
+<h1>Admin::Events#edit</h1>
+<p>Find me in app/views/admin/events/edit.html.erb</p>
+
+<h1>Review event</h1>
+
+<%= button_to "Validate event", admin_event_path(@event), method: :patch, name: 'admin_choice', class: "btn btn-primary" %>
+<%= button_to "Refuse event", admin_event_path(@event), method: :patch, name: 'admin_choice', class: "btn btn-primary" %>
+
+
+
+<div class="jumbotron">
+  <h1 class="display-4"> <%= @event.title %> </h1>
+  <hr class="my-4">
+  <p class="lead"> <strong>Description: </strong><%= @event.description %></p>
+  <p class="lead"> <strong>Organisateur: </strong><%= @event.admin.first_name %> <%= @event.admin.last_name %> </p>
+  <p class="lead"> <strong>Ville: </strong> <%= @event.location %> </p>
+  <p class="lead"> <strong>Prix: </strong> <%= @event.price %> </p>
+  <p class="lead"> <strong>Nombre de participants: </strong> <%= @event.attendees.count %> </p>
+  <p class="lead"> <strong>Date de début: </strong> <%= @event.start_date.strftime("%-d/%m/%y: %H:%M") %> </p>
+  <p class="lead"> <strong>Date de fin: </strong> <%= end_date(@event) %> </p>
+  <%if @event.event_pic.attached?%>
+    <%= image_tag resize(@event, '350x250'), alt: 'event_picture' %>
+    <%else%>
+    <p class="lead">=== Il n'y a pas encore de photo lié à cet évènement ===</p>
+    <%end%>
+</div>

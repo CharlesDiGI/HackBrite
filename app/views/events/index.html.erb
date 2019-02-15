@@ -10,24 +10,26 @@
 
 <div class="card-deck">
  <% @events.each do |event| %>
- <div class="col-4 justify-content-around mb-4 mt-2">
-  <div class="card">
-    <div class="card-img-top">
-      <% if event.event_pic.attached? %>
-        <%= image_tag resize(event, '250x150')%>
-        <% end %>
-    </div>
-      <%# <img class="card-img-top" src="..." alt="Card image cap"> %>
-    <div class="card-body">
-      <h5 class="card-title"><%= event.title %></h5>
-      <p class="card-text"><%= event.description %></p>
-    </div>
-    <div class="card-footer">
-    <%= link_to "En savoir plus?", event_path(event.id), class: "btn", method: "get" %>
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  </div>
+  <% if accepted(event) %>
+    <div class="col-4 justify-content-around mb-4 mt-2">
+      <div class="card">
+        <div class="card-img-top">
+          <% if event.event_pic.attached? %>
+            <%= image_tag resize(event, '250x150')%>
+            <% end %>
+        </div>
+          <%# <img class="card-img-top" src="..." alt="Card image cap"> %>
+        <div class="card-body">
+          <h5 class="card-title"><%= event.title %></h5>
+          <p class="card-text"><%= event.description %></p>
+        </div>
+        <div class="card-footer">
+        <%= link_to "En savoir plus?", event_path(event.id), class: "btn", method: "get" %>
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+      </div>
+    <% end %>
   <% end %>
   </div>
 </div>

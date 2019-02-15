@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     root 'admin#index'
     # resources :admins, only: [:index]
     resources :users
+    resources :events
   end
 
 end

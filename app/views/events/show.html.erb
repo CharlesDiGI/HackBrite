@@ -1,3 +1,7 @@
+<% unless accepted(@event) %>
+    <h1>L'event n'a pas encore été accepté</h1>
+<% end %>
+
 <% if event_admin %>
 <h1> Tu es l`organisateur de l'évènement n°<%= @event.id %></h1>
 <%= link_to "Mon espace événement", event_attendances_path(@event),class:"btn btn-primary"  %>
