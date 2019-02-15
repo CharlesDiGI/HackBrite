@@ -13,7 +13,7 @@
   <li class="list-group-item"><strong>Description:</strong> <%= @user.description %></li>
   <li class="list-group-item"><strong>Avatar actuel:</strong> 
     <%if @user.avatar.attached?%>
-    <%= image_tag @user.avatar, alt: 'avatar' %>
+    <%= image_tag resize_avatar(@user, '250x150'), alt: 'avatar' %>
     <%else%>
     <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
     <%end%>
