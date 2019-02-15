@@ -1,2 +1,26 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<ul class="list-group">
+  <li class="list-group-item"><strong>First name:</strong> <%= @user.first_name %> </li>
+  <li class="list-group-item"><strong>Last name:</strong> <%= @user.last_name %> </li>
+  <li class="list-group-item"><strong>Email:</strong> <%= @user.email %> </li>
+  <li class="list-group-item"><strong>Description:</strong> <%= @user.description %></li>
+  <li class="list-group-item"><strong>Avatar actuel:</strong> 
+    <%if @user.avatar.attached?%>
+    <%= image_tag resize_avatar(@user, '250x150'), alt: 'avatar' %>
+    <%else%>
+    <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+    <%end%>
+   </li>
+</ul>
+
+</br>
+</br>
+<h1>Et voilà tous les évènements créés par l'utilisateur:</h1>
+
+<div class="list-group">
+    <% @user.organized_events.each do |event| %>
+        <%= link_to "#{event.title}", event_path(event.id), class: "list-group-item list-group-item-action" %>
+    <% end %>
+</div>
+</br>
+</br>
+<%= link_to 'Back', admin_users_path, class: "btn btn-outline-dark" %>

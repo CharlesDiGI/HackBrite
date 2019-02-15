@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
+  include Admin::AdminHelper
   before_action :configure_permitted_parameters, if: :devise_controller? 
-  helper_method :is_admin?, :already_attending
+  helper_method :already_attending
   
 
   def event_admin?

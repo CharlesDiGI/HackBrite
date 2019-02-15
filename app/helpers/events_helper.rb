@@ -4,7 +4,7 @@ module EventsHelper
     (event.start_date + event.duration * 60).strftime("%-d/%m/%y: %H:%M")
   end
 
-  def is_admin?
+  def is_event_admin?
     unless current_user == Event.find(params[:id]).admin
       flash[:danger] = "You can't access it as you are not the administrator"
       redirect_back(fallback_location: root_path)

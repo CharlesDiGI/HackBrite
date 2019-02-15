@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   include EventsHelper
   before_action :authenticate_user!, only: [:new]
-  before_action :is_admin?, only: [:destroy, :update, :edit]
+  before_action :is_event_admin?, only: [:destroy, :update, :edit]
   
   def index
     @events = Event.all

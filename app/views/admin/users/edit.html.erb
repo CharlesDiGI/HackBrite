@@ -1,0 +1,37 @@
+<%# <h1>Editing Admin User</h1> %>
+
+<%# <%= render 'form', admin_user: @admin_user %> 
+
+<%# <%= link_to 'Show', @admin_user %>
+<%# <%= link_to 'Back', admin_users_path %>
+
+<h1>Admin::Users#edit</h1>
+
+
+<div class="header">
+	<h1> Tu peux changer les infos de l'utilisateur ici:</h1>
+</div>
+
+<%= form_for [:admin, @user] do |f| %>
+  <div class="form-group">
+    <%= f.text_field :first_name, value: @user.first_name, class: 'form-control', placeholder: 'Prénom'%>
+    <%= f.text_field :last_name, value: @user.last_name, class: 'form-control', placeholder: 'Nom'%>
+    <%= f.text_area :description, value: @user.description, class: 'form-control', placeholder: 'Description'%>
+  </div>
+  <div class="form-group">
+	<button type="submit" class="btn btn-secondary"> Modifier </button>
+  </div>
+<% end %>
+</br></br></br>
+
+<h3>Changer d'avatar ?</h3>
+
+<%= form_tag user_avatars_path(@user), multipart: true do %>
+    <div class="form-group">
+        <%= file_field_tag :avatar %>
+        <%= submit_tag "mettre à jour" , class: "btn btn-primary"%>
+    </div>
+<% end %>
+</br></br></br>
+
+<%= link_to 'Back sans sauvegarder', admin_users_path, class: "btn btn-warning" %>

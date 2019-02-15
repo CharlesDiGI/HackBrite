@@ -1,2 +1,6 @@
-<h1>Admin::Admin#index prout</h1>
-<p>Find me in app/views/admin/admin/index.html.erb</p>
+<h1>Bienvenue sur la page admin <%= current_user.first_name %></h1>
+</br>
+</br>
+<%# <h2>Voir les users:</h2> %>
+<%= link_to "Liste des users", admin_users_path, class: "btn btn-info"  %>
+
