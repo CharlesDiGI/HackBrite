@@ -3,6 +3,8 @@
 <%= link_to "Mon espace événement", event_attendances_path(@event),class:"btn btn-primary"  %>
 <% elsif already_attending(@event)  %>
 <h1>Tu es déjà inscrit</h1>
+<% elsif :authenticate_user! %>
+<h1>Merci de te connecter pour rejoindre l'évènement</h1>
 <% else %>
 <h1>Tu peux rejoindre l'évènement</h1>
 <%= link_to "Rejoins cet évènement", new_event_attendance_path(@event.id), class:"btn btn-primary" %>

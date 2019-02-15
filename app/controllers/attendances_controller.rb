@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :index]
+  before_action :authenticate_user!, only: [:create, :index, :new]
   before_action :already_attending, only: [:new, :create]
   before_action :admin_cannot_attend_own_event, only: [:new, :create]
 
