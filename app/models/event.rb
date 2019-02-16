@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   has_one_attached :event_pic
   has_many :attendances
   has_many :attendees, class_name: "User", through: :attendances 
-  belongs_to :admin, class_name: "User" #, foreign_key: :admin_id
+  belongs_to :creator, class_name: "User" #, foreign_key: :admin_id
 
   has_many :event_submissions
   has_many :event_statuses, through: :event_submissions

@@ -4,15 +4,15 @@ module EventsHelper
     (event.start_date + event.duration * 60).strftime("%-d/%m/%y: %H:%M")
   end
 
-  def is_event_admin?
-    unless current_user == Event.find(params[:id]).admin
-      flash[:danger] = "You can't access it as you are not the administrator"
+  def is_event_creator?
+    unless current_user == Event.find(params[:id]).creator
+      flash[:danger] = "You can't access it as you are not the creator"
       redirect_back(fallback_location: root_path)
     end
   end
   
-  def event_admin
-    current_user == Event.find(params[:id]).admin
+  def event_creator
+    current_user == Event.find(params[:id]).creator
   end
 
   def already_attending(event)
@@ -54,9 +54,9 @@ module EventsHelper
     end
   end
 
-  def creator(event)
-    "#{event.user.last_name}"
-  end
+  # def creator(event)
+  #   @user = event.creator
+  # end
 
 
 end

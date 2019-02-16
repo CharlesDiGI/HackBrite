@@ -15,6 +15,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Title</th>
+      <th scope="col">Creator</th>
       <th scope="col">Status</th>
     </tr>
   </thead>
@@ -23,6 +24,7 @@
     <tr>
       <th scope="row"><%= event.id %></th>
       <td><%= event.title %></td>
+      <td><%= event.creator.first_name %> <%= event.creator.last_name  %></td>
       <td><%= status(event)  %>
     </tr>
     <% end %>

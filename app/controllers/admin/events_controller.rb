@@ -11,6 +11,7 @@ class Admin::EventsController < ApplicationController
         @event.event_status_ids = [2]
         @event.save
         flash[:success] = "Event accepté"
+        new_event_email
         redirect_to admin_events_path
       elsif params[:admin_choice] == "Refuse event"
         @event.event_status_ids = [3]
@@ -41,4 +42,8 @@ class Admin::EventsController < ApplicationController
     params.require(:event).permit(:admin_choice)
   end
 
+  def new_event_email
+    EventMailer.new_event_email(self).deliver_now
+  end
+  
 end

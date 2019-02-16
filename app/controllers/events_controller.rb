@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   include EventsHelper
   before_action :authenticate_user!, only: [:new]
-  before_action :is_event_admin?, only: [:destroy, :update, :edit]
+  before_action :is_event_creator?, only: [:destroy, :update, :edit]
 
   def index
     @events = Event.all
@@ -18,7 +18,7 @@ class EventsController < ApplicationController
   
   def create
     @event = Event.new(event_params)
-    @event.admin = current_user
+    @event.creator = current_user
     
     respond_to do |format|
       if @event.save
@@ -51,13 +51,13 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-    if current_user == @event.admin
+    if current_user == @event.creator
       @event.destroy
       flash[:notice] = "Post successfully deleted"
       flash[:type] = "danger"
       redirect_to user_path(current_user)
     else
-      flash[:notice] = "You're not the admin of this event"
+      flash[:notice] = "You're not the creator of this event"
       flash[:type] = "danger"
       redirect_to event_path(@event)
     end
@@ -65,7 +65,7 @@ class EventsController < ApplicationController
 
   private 
     def event_params
-      params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :admin, :event_pic)
+      params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :creator, :event_pic)
     end
 
 end

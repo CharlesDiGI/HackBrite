@@ -11,7 +11,7 @@
   <h1 class="display-4"> <%= @event.title %> </h1>
   <hr class="my-4">
   <p class="lead"> <strong>Description: </strong><%= @event.description %></p>
-  <p class="lead"> <strong>Organisateur: </strong><%= @event.admin.first_name %> <%= @event.admin.last_name %> </p>
+  <p class="lead"> <strong>Organisateur: </strong><%= @event.creator.first_name %> <%= @event.creator.last_name %> </p>
   <p class="lead"> <strong>Ville: </strong> <%= @event.location %> </p>
   <p class="lead"> <strong>Prix: </strong> <%= @event.price %> </p>
   <p class="lead"> <strong>Nombre de participants: </strong> <%= @event.attendees.count %> </p>

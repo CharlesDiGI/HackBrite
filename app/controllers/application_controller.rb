@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   helper_method :already_attending
   
 
-  def event_admin?
-    unless current_user == Event.find(params[:event_id]).admin
-      flash[:danger] = "You can't access it as you are not the administrator"
+  def event_creator?
+    unless current_user == Event.find(params[:event_id]).creator
+      flash[:danger] = "You can't access it as you are not the creatoristrator"
       redirect_back(fallback_location: root_path)
     end
   end
@@ -18,9 +18,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def admin_cannot_attend_own_event
-    if current_user == Event.find(params[:event_id]).admin
-      flash[:danger] = "Vous ne pouvez pas vous inscrire à un événement que vous administrez"
+  def creator_cannot_attend_own_event
+    if current_user == Event.find(params[:event_id]).creator
+      flash[:danger] = "Vous ne pouvez pas vous inscrire à un événement que vous creatoristrez"
       redirect_back(fallback_location: root_path)
     end
   end
