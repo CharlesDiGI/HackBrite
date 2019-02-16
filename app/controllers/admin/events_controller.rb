@@ -1,17 +1,21 @@
 class Admin::EventsController < ApplicationController
+  include Admin::AdminHelper
+  before_action :authenticate_user!
+  before_action :is_admin?
 
   def update
     @event = Event.find(params[:id])
+    puts params
+    puts "*" * 40
       if params[:admin_choice] == "Validate event"
-        puts @event.event_status_ids
         @event.event_status_ids = [2]
-        puts "*" * 50
-        puts @event.event_status_ids
         @event.save
-        flash[:warning] = "Event accepté"
+        flash[:success] = "Event accepté"
         redirect_to admin_events_path
-      else
-        flash[:danger] = "Il manque des informations"
+      elsif params[:admin_choice] == "Refuse event"
+        @event.event_status_ids = [3]
+        @event.save
+        flash[:danger] = "Event refusé"
         redirect_to admin_events_path
       end
   end
@@ -23,6 +27,7 @@ class Admin::EventsController < ApplicationController
     @events = Event.all
     @status = EventStatus.all
   end
+
 
   def show
   end

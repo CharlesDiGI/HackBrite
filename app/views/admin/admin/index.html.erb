@@ -1,7 +1,30 @@
 <h1>Bienvenue sur la page admin <%= current_user.first_name %></h1>
 </br>
 </br>
-<%# <h2>Voir les users:</h2> %>
-<%= link_to "Liste des users", admin_users_path, class: "btn btn-info"  %>
-<%= link_to "Liste des events à review", admin_events_path, class: "btn btn-info"  %>
 
+<%# <h2>Voir les users:</h2> %>
+<%= link_to "Liste des users", admin_users_path, class: "btn btn-info"  %></br></br>
+<%= link_to "Liste des events à review", admin_events_path, class: "btn btn-info"  %></br></br>
+
+
+
+<p>Voici la liste de tous les events</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+    <tr>
+      <th scope="row"><%= event.id %></th>
+      <td><%= event.title %></td>
+      <td><%= status(event)  %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

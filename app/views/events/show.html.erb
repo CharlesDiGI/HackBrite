@@ -1,36 +1,41 @@
 <% unless accepted(@event) %>
-    <h1>L'event n'a pas encore été accepté</h1>
-<% end %>
-
-<% if event_admin %>
-<h1> Tu es l`organisateur de l'évènement n°<%= @event.id %></h1>
-<%= link_to "Mon espace événement", event_attendances_path(@event),class:"btn btn-primary"  %>
-<% elsif already_attending(@event)  %>
-<h1>Tu es déjà inscrit</h1>
-<% elsif :authenticate_user! %>
-<h1>Merci de te connecter pour rejoindre l'évènement</h1>
+    <h1>L'event a été envoyé pour review. Tu seras prévenu par mail dès qu'il sera accepté</h1>
+    </br>
+        <div class="list-group-item list-group-item-action">
+            <h3>Titre: <%= @event.title  %></h3>
+        </div>
+        </br></br>
+    <%= link_to "Retour profil", user_path(@event.admin), class: "btn btn-outline-dark" %>
 <% else %>
-<h1>Tu peux rejoindre l'évènement</h1>
-<%= link_to "Rejoins cet évènement", new_event_attendance_path(@event.id), class:"btn btn-primary" %>
-<% end %>
-</br></br>
+    <% if event_admin %>
+    <h1> Tu es l`organisateur de l'évènement n°<%= @event.id %></h1>
+    <%= link_to "Mon espace événement", event_attendances_path(@event),class:"btn btn-primary"  %>
+    <% elsif already_attending(@event)  %>
+    <h1>Tu es déjà inscrit</h1>
+    <% elsif :authenticate_user! %>
+    <h1>Merci de te connecter pour rejoindre l'évènement</h1>
+    <% else %>
+    <h1>Tu peux rejoindre l'évènement</h1>
+    <%= link_to "Rejoins cet évènement", new_event_attendance_path(@event.id), class:"btn btn-primary" %>
+    <% end %>
+    </br></br>
 
-<div class="jumbotron">
-  <h1 class="display-4"> <%= @event.title %> </h1>
-  <hr class="my-4">
-  <p class="lead"> <strong>Description: </strong><%= @event.description %></p>
-  <p class="lead"> <strong>Organisateur: </strong><%= @event.admin.first_name %> <%= @event.admin.last_name %> </p>
-  <p class="lead"> <strong>Ville: </strong> <%= @event.location %> </p>
-  <p class="lead"> <strong>Prix: </strong> <%= @event.price %> </p>
-  <p class="lead"> <strong>Nombre de participants: </strong> <%= @event.attendees.count %> </p>
-  <p class="lead"> <strong>Date de début: </strong> <%= @event.start_date.strftime("%-d/%m/%y: %H:%M") %> </p>
-  <p class="lead"> <strong>Date de fin: </strong> <%= end_date(@event) %> </p>
-  <%if @event.event_pic.attached?%>
-    <%= image_tag resize(@event, '350x250'), alt: 'event_picture' %>
-    <%else%>
-    <p class="lead">=== Il n'y a pas encore de photo lié à cet évènement ===</p>
-    <%end%>
-</div>
+    <div class="jumbotron">
+    <h1 class="display-4"> <%= @event.title %> </h1>
+    <hr class="my-4">
+    <p class="lead"> <strong>Description: </strong><%= @event.description %></p>
+    <p class="lead"> <strong>Organisateur: </strong><%= @event.admin.first_name %> <%= @event.admin.last_name %> </p>
+    <p class="lead"> <strong>Ville: </strong> <%= @event.location %> </p>
+    <p class="lead"> <strong>Prix: </strong> <%= @event.price %> </p>
+    <p class="lead"> <strong>Nombre de participants: </strong> <%= @event.attendees.count %> </p>
+    <p class="lead"> <strong>Date de début: </strong> <%= @event.start_date.strftime("%-d/%m/%y: %H:%M") %> </p>
+    <p class="lead"> <strong>Date de fin: </strong> <%= end_date(@event) %> </p>
+    <%if @event.event_pic.attached?%>
+        <%= image_tag resize(@event, '350x250'), alt: 'event_picture' %>
+        <%else%>
+        <p class="lead">=== Il n'y a pas encore de photo lié à cet évènement ===</p>
+        <%end%>
+    </div>
 
 
 <%# <h1>Et voilà la liste de  toutes les personnes inscrites à cet évènement: </h1>
@@ -43,3 +48,5 @@
     <%# </h3> %>
     <%# <% end %>
 <%# </div> %> 
+
+<% end %>

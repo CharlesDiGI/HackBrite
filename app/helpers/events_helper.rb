@@ -41,6 +41,22 @@ module EventsHelper
     event.event_status_ids == [3]
   end
 
+  def status(event)
+    case event.event_status_ids
+    when [1]
+    return "Pending"
+    when [2]
+    return "Accepted"
+    when [3]
+    return "Refused"
+    else
+    return "No status"
+    end
+  end
+
+  def creator(event)
+    "#{event.user.last_name}"
+  end
 
 
 end

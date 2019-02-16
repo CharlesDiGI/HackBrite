@@ -5,8 +5,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Title</th>
-      <th scope="col">Creator First Name</th>
-      <th scope="col">Creator Last Name</th>
+      <th scope="col">Creator</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -16,8 +15,7 @@
     <tr>
       <th scope="row"><%= event.id %></th>
       <td><%= event.title %></td>
-      <td><%= event.admin.first_name %></td>
-      <td><%= event.admin.last_name %></td>
+      <td><%= event.admin.first_name %><%= event.admin.last_name %></td>
       <td><%= link_to "Review event", edit_admin_event_path(event)  %>
     </tr>
          <% end %>

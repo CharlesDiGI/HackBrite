@@ -13,11 +13,12 @@ end
 
 
 #Create User
-8.times do
+10.times do
   user = User.create!(first_name: Faker::DragonBall.character, last_name: Faker::Name.last_name , description: Faker::HowIMetYourMother.quote, email: Faker::Name.middle_name + "@yopmail.com", password: "tototo" )
 puts "If you want to check user creation, email sent to: #{user.email}" 
 end
 puts "*" * 66
+
 
 #Create Event
 15.times do

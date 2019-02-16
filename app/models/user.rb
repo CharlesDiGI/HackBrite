@@ -13,7 +13,7 @@ class User < ApplicationRecord
     
     has_many :review_jobs, foreign_key: 'webmaster_id', class_name: "EventSubmission"
       has_many :events, through: :event_submission
-
+  
   
   # validates :first_name, presence: { message: "Please type your first name" }
   # validates :last_name, presence: { message: "Please type your last name" }
