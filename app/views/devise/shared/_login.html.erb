@@ -1,0 +1,40 @@
+
+<div class="container">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  
+  <div class="row justify-content-md-center">
+    <h5>Please log in</h5>
+  </div>
+  </br>
+  <div class="row justify-content-md-center">
+      <div class="form-group col-4">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center">
+      <div class="form-group col-4">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+  </div>
+  </div>
+
+<div class="row justify-content-md-center">
+      <div class="form-group col-4">
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+  </div>
+  </div>
+
+
+<div class="actions row justify-content-md-center">
+    <%= f.submit "Log in", class:"btn btn-primary"%>
+  </div>
+
+<% end %>
+</div>
